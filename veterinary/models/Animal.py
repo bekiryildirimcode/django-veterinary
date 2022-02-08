@@ -2,7 +2,7 @@ from django.db import models
 from autoslug import AutoSlugField
 from .Owner import OwnerModel
 class AnimalModel(models.Model):
-    owner=models.ForeignKey('accounts.CustomUserModel',on_delete=models.CASCADE,related_name="owner",null=True)
+    owner=models.ForeignKey(OwnerModel,on_delete=models.CASCADE,related_name="owner",null=True)
     kind= models.CharField(max_length=50,null=True)
     genus= models.CharField(max_length=50,null=True)
     name= models.CharField(max_length=70,null=True)
@@ -15,6 +15,6 @@ class AnimalModel(models.Model):
     class Meta:
         verbose_name="Animal"
         verbose_name = 'Animal'
-
+      
     def __str__(self):
         return self.name

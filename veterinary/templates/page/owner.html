@@ -38,10 +38,11 @@
             <th scope="row">1</th>
             <td>   {{row.name}}</td>
             <td> {{row.email}}</td>
-            <td> {{row.phone}}</td>
+            <td> {{row.phone}} </td>
+            
             <td>
                 <a href="{% url 'veterinary:editowner' slug=row.slug %}" class="btn btn-primary">Düzenle</a>
-                <a href="" class="btn btn-success">Hayvan Ekle</a>
+                <a href="{% url 'veterinary:insertanimal' slug=row.slug %}"class="btn btn-success">Hayvan Ekle</a>
                 <a href="" class="btn btn-info">Detay</a>
                 <a href="" class="btn btn-danger">Sil</a>
             </td>

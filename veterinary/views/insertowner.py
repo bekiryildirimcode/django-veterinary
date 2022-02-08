@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from veterinary.forms import NewOwnerForm
+
 class InsertOwnerView(LoginRequiredMixin,View):
     
     http_method_names=['get','post']
