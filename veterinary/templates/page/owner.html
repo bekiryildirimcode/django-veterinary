@@ -43,7 +43,7 @@
             <td>
                 <a href="{% url 'veterinary:editowner' slug=row.slug %}" class="btn btn-primary">Düzenle</a>
                 <a href="{% url 'veterinary:insertanimal' slug=row.slug %}"class="btn btn-success">Hayvan Ekle</a>
-                <a href="" class="btn btn-info">Detay</a>
+                <a href="{% url 'veterinary:animal' slug=row.slug %}" class="btn btn-info">Detay</a>
                 <a href="" class="btn btn-danger">Sil</a>
             </td>
           </tr>

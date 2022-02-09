@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from veterinary.views import OwnerView
-from veterinary.views import InsertOwnerView,EditOwnerView,InsertAnimalView
+from veterinary.views import InsertOwnerView,EditOwnerView,InsertAnimalView,AnimalView
 
 app_name="veterinary"
 urlpatterns = [
@@ -9,6 +9,7 @@ urlpatterns = [
     path('', OwnerView.as_view(),name="owner"),#Home page
     path('insertowner',InsertOwnerView.as_view(),name="insertowner"),
     path('editowner/<slug:slug>',EditOwnerView.as_view(),name="editowner"),
+    path('animal/<slug:slug>',AnimalView.as_view(),name="animal"),
     path('insertanimal/<slug:slug>',InsertAnimalView.as_view(),name="insertanimal"),
 
 

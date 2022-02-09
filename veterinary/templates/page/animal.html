@@ -1,0 +1,111 @@
+{% extends 'layout.html' %}
+{% block title %} Hayvanlar {% endblock %}
+
+{% block content %}
+
+
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Hayvalar</li>
+    </ol>
+</nav>
+
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+
+    <div {% if message.tags %} class="alert alert-success {{ message.tags }}" {% endif %} role="alert">
+        {{message}}
+    </div>
+    {% endfor %}
+</ul>
+{% endif %}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h1>Hayvan Sahibi</h1>
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">İsim</th>
+                        <th scope="col">E-Poste</th>
+                        <th scope="col">Telefon</th>
+                        <th scope="col">Aksiyon</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in owner  %}
+                    <tr>
+                        <th scope="row">1</th>
+                        <td> {{row.name}}</td>
+                        <td> {{row.email}}</td>
+                        <td> {{row.phone}} </td>
+
+                        <td>
+                            <a href="{% url 'veterinary:editowner' slug=row.slug %}" class="btn btn-primary">Düzenle</a>
+                            <a href="{% url 'veterinary:insertanimal' slug=row.slug %}" class="btn btn-success">Hayvan
+                                Ekle</a>
+                            <a href="{% url 'veterinary:animal' slug=row.slug %}" class="btn btn-info">Detay</a>
+                            <a href="" class="btn btn-danger">Sil</a>
+                        </td>
+                    </tr>
+                    {%  endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h1>Hayvanlar</h1>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Tür</th>
+                            <th scope="col">Cins</th>
+                            <th scope="col">İsim</th>
+                            <th scope="col">Yaş</th>
+                            <th scope="col">Aksiyon</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in animal  %}
+                        <tr>
+                            <th scope="row">1</th>
+                            <td> {{row.kind}}</td>
+                            <td> {{row.genus}}</td>
+                            <td> {{row.name}} </td>
+                            <td> {{row.age}} </td>
+                            <td>
+                                <a href="{% url 'veterinary:editowner' slug=row.slug %}"
+                                    class="btn btn-primary">Düzenle</a>
+                                <a href="" class="btn btn-info">Detay</a>
+                                <a href="" class="btn btn-danger">Sil</a>
+                            </td>
+                        </tr>
+                        {%  endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+{% endblock %}
