@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Hayvan Güncelle {% endblock %}
+
+{% block content %} 
+
+
+ 
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Hayvan  Güncelle</li>
+    </ol>
+  </nav>
+<main class="login-form mt-5">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                 
+                    <div class="card-body text-center">
+                        {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                            
+                            <div {% if message.tags %}  class="alert alert-danger {{ message.tags }}" {% endif %} role="alert">
+                            {{message}}
+                              </div>
+                                {% endfor %}
+                        </ul>
+                        {% endif %}
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ edit_form|crispy }}
+                            <button type="submit" class="btn btn-primary mt-3">
+                              Güncelle
+                            </button>
+                          
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block title %} Silmek İstediğinize Eminmisiniz {% endblock %}
+
+{% block content %}
+
+
+
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            Öğeyi Sil
+        </div>
+        <div class="modal-body">
+            Silmek İstediğinizden Eminmisiniz
+        </div>
+        <div class="modal-footer">
+            <a href="{{request.META.HTTP_REFERER}}" class="btn btn-info" data-dismiss="modal">Hayır</a>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-danger" value="Evet" />
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

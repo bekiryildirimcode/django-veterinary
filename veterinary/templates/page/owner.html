@@ -1,56 +1,74 @@
 {% extends 'layout.html' %}
 {% block title %} Anasayfa {% endblock %}
 
-{% block content %} 
+{% block content %}
 
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
 
- 
-
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item active" aria-current="page">Sahipler</li>
-    </ol>
-  </nav>
-  {% if messages %}
-  <ul class="messages">
-      {% for message in messages %}
-      
-      <div {% if message.tags %}  class="alert alert-success {{ message.tags }}" {% endif %} role="alert">
-      {{message}}
-        </div>
-          {% endfor %}
-  </ul>
-  {% endif %}
-  <div class="container-fuild">
-    <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">İsim</th>
-            <th scope="col">E-Poste</th>
-            <th scope="col">Telefon</th>
-            <th scope="col">Aksiyon</th>
-          </tr>
-        </thead>
-        <tbody>
-            {% for row in owner  %}
-          <tr>
-            <th scope="row">1</th>
-            <td>   {{row.name}}</td>
-            <td> {{row.email}}</td>
-            <td> {{row.phone}} </td>
-            
-            <td>
-                <a href="{% url 'veterinary:editowner' slug=row.slug %}" class="btn btn-primary">Düzenle</a>
-                <a href="{% url 'veterinary:insertanimal' slug=row.slug %}"class="btn btn-success">Hayvan Ekle</a>
-                <a href="{% url 'veterinary:animal' slug=row.slug %}" class="btn btn-info">Detay</a>
-                <a href="" class="btn btn-danger">Sil</a>
-            </td>
-          </tr>
-          {%  endfor %}
-        </tbody>
-      </table>
-    
+  <div {% if message.tags %} class="alert alert-success {{ message.tags }}" {% endif %} role="alert">
+    {{message}}
   </div>
+  {% endfor %}
+</ul>
+{% endif %}
+
+<div class="container-fuild">
+  <div class="row">
+
+  
+
+    <div class="col-md-12 ">
+
+      <div class="panel panel-default panel-table">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col col-xs-6">
+              <h3 class="panel-title">Havyan Sahibleri</h3>
+            </div>
+            <div class="col col-xs-6 text-right">
+              <a href="{% url 'veterinary:insertowner' %} "  class="btn btn-sm btn-primary btn-create">Yeni Ekle</a>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <table class="table table-striped table-bordered table-list">
+            <thead>
+              <tr>
+                <th><em class="fa fa-cog"></em></th>
+                <th class="hidden-xs">ID</th>
+                <th scope="col">İsim</th>
+                <th scope="col">E-Poste</th>
+                <th scope="col">Telefon</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in owner  %}
+              <tr>
+                <td align="center">
+                  <a href="{% url 'veterinary:editowner' slug=row.slug %}" class="btn btn-primary">Düzenle</a>
+                  <a href="{% url 'veterinary:insertanimal' slug=row.slug %}" class="btn btn-success">Hayvan Ekle</a>
+                  <a href="{% url 'veterinary:animal' slug=row.slug %}" class="btn btn-info">Hayvanlar</a>
+                  {% if user.role %}
+                  <a href="{% url 'veterinary:ownerdelete' slug=row.slug %}" class="btn btn-danger">Sil</a>
+                  {% endif %}
+                </td>
+                <td class="hidden-xs"> {{row.id}} </td>
+                <td>{{row.name}}</td>
+                <td>{{ row.email}}</td>
+                <td> {{row.phone}} </td>
+              </tr>
+              {%  endfor %}
+            </tbody>
+          </table>
+
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+</div>
 
 {% endblock %}

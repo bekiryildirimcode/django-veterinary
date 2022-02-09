@@ -5,3 +5,8 @@ from accounts.models import CustomUserModel
 class CustomAdmin(UserAdmin):
     model=CustomUserModel
     list_display=('username','email','role',)
+    fieldsets = UserAdmin.fieldsets+ (
+        ("Role",{
+            "fields":["role"]
+        }),
+    )

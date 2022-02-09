@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Hayvan Detay {% endblock %}
+
+{% block content %} 
+
+  <div class="container-xl px-4 mt-4">
+    <hr class="mt-0 mb-4">
+    <div class="row">
+        <div class="col-xl-4">
+  
+            <div class="card mb-4 mb-xl-0">
+                <div class="card-header">Sahib Bilgisi</div>
+                <div class="card-body text-center">
+                    <form>
+                   
+                        <div class="mb-3">
+                            <label class="small mb-1" >Adı</label>
+                            <input class="form-control"  type="text"  readonly  value="{{animal.owner.name}}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="small mb-1" >Email</label>
+                            <input class="form-control"  type="text"  readonly  value="{{animal.owner.email}}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="small mb-1" >Telefon</label>
+                            <input class="form-control"  type="text"  readonly  value="{{animal.owner.phone}}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="small mb-1" >Adres</label>
+                            <textarea class="form-control"  type="text"  readonly  > {{animal.owner.address}}</textarea>
+                        </div>
+                 
+                     
+                    </form>
+                  
+                  
+              
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8">
+      
+            <div class="card mb-4">
+                <div class="card-header">Hayvan Detay</div>
+                <div class="card-body">
+                    <form>
+                   
+                        <div class="mb-3">
+                            <label class="small mb-1" >Adı</label>
+                            <input class="form-control"  type="text"  readonly  value="{{animal.name}}">
+                        </div>
+               
+                        <div class="row gx-3 mb-3">
+                     
+                            <div class="col-md-6">
+                                <label class="small mb-1" >Tür</label>
+                                <input class="form-control"  type="text" readonly value="{{animal.kind}}">
+                            </div>
+                   
+                            <div class="col-md-6">
+                                <label class="small mb-1">Cins</label>
+                                <input class="form-control"type="text" readonly value="{{animal.genus}}">
+                            </div>
+                        </div>
+                      
+                        <div class="row gx-3 mb-3">
+                         
+                            <div class="col-md-12">
+                                <label class="small mb-1">Yaş </label>
+                                <input class="form-control"  readonly type="text"  value="{{animal.age}}">
+                            </div>
+                         
+                        </div>
+              
+                        <div class="mb-3">
+                            <label class="small mb-1" >Açıklama</label>
+                            <textarea class="form-control"  type="email" readonly > {{animal.description}} </textarea>
+                        </div>
+                 
+                     
+           
+                    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

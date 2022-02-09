@@ -31,7 +31,7 @@ class InsertAnimalView(LoginRequiredMixin,View):
           animal.owner=owner
           animal.save()
           messages.success(self.request, "Hayvan  Eklendi." )
-          return redirect("veterinary:owner")
+          return redirect("veterinary:animal",slug=owner.slug)
            
         else:
             messages.success(self.request, "Hayvan  Eklenemedi." )

@@ -3,3 +3,7 @@ from .insertowner import InsertOwnerView
 from .editowner import EditOwnerView
 from .insertanimal import InsertAnimalView
 from .animal import AnimalView
+from .editanimal import EditAnimalView
+from .detailanimal import AnimalDeteailView
+from .deleteanimal import AnimalDeleteView
+from .deleteowner import OwnerDeleteView
