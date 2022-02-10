@@ -3,7 +3,9 @@ from veterinary.models import OwnerModel
 from django.shortcuts import get_object_or_404,redirect
 from django.urls import reverse_lazy
 from django.contrib import messages
-class OwnerDeleteView(DeleteView):
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+class OwnerDeleteView(LoginRequiredMixin, DeleteView):
     template_name='page/deleteconfirm.html'
     success_url = reverse_lazy("veterinary:owner")
     def get_queryset(self):

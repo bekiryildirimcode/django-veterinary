@@ -6,7 +6,7 @@ class NewOwnerForm(forms.ModelForm):
 	class Meta:
 		model = OwnerModel
 		fields = ("name", "email", "phone", "address")
-
+		labels={"name":"İsim","email":"Email","phone":"Telefon","adsress":"Adres"}
 	def save(self, commit=True):
 		user = super(NewOwnerForm, self).save(commit=False)
 		user.email = self.cleaned_data['email']

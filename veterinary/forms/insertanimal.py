@@ -6,5 +6,6 @@ class NewAnimalForm(forms.ModelForm):
 	class Meta:
 		model = AnimalModel
 		fields = ("kind", "genus", "name", "age","description",)
+		labels={"kind":"Tür","genus":"Cins","name":"İsim","age":"Yaş","description":"Açıklama"}
        
      
