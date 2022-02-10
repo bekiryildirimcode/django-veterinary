@@ -55,6 +55,6 @@ Password(again): ******
 ## Önemli
 Kullanıcı kayıt olduğunda default olarak veri silemez.
 Kullancıya silme izni vermek için url/admin  yolundan oluşturduğunuz super user ile giriş yapıp
-Kullanıcını role parametresini akif etmeniz gerekmektedir
+kullanıcını role parametresini akif etmeniz gerekmektedir.
 
 
